@@ -1,0 +1,56 @@
+<html>
+{% block javascript %}
+	<script type="text/javascript">
+		var updateState = 0;
+		var gameState = 0;
+		var chatStream = "";
+		var chatSending = 0;
+		htreq = new XMLHttpRequest(); 
+		htreqS = new XMLHttpRequest();
+	</script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+	<script type="text/javascript">
+        {% include "functions.js" %}
+    </script>
+	<script type="text/javascript">
+		var gameTimer = setInterval(function(){updateGame(htreq,gameTimer)},200);
+		var slowtimer = setInterval(function(){updateImagesBackground(htreqS,slowtimer)},15000);
+		window.onbeforeunload=function(){
+		leaving = new XMLHttpRequest();
+		leaving.open( "GET", "leave", true );
+		leaving.send();
+		};
+	</script>
+{% endblock %}
+
+<head> <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"  /> </head>
+<div id="wrapper">
+<div id="content">
+	<div id="headerstyle">
+	<div id="headerwrap">
+	<div id="header"></div>
+	<div id="stats"></div>
+	</div></div>
+	<div id="handwrap">
+	<div id="hand"></div>
+	</div>
+	{% for im in imlist %}
+		<img id="{{im}} class = "unselectedIM" src="/im?imkey={{im}}" onclick="addBorder(this)"/>
+	{% endfor %}
+	<button id = "b2" type="submit" style="display: none;" value = ""></button>
+	<button id = "uname" type="submit" style="display: none;" value = {{ukey}}></button>
+	<textarea value= "" id = "imstore" style="display: none;">nothing to see</textarea>
+	<textarea value= "" id = "statstore" style="display: none;">nothing to see</textarea>
+</div>
+</div>
+<div id="sidebar">
+<div id="navigation" class="navigation">
+<div id='navstuff'>
+<a id = "logout" href="{{ logoutUrl }}">Logout</a><body>&nbsp&nbsp&nbsp<body><a id = "leavegame" href="/leave">Leave Game</a>
+<br><br> <a id = "learninate" href="http://en.wikipedia.org/wiki/Special:Random">I'm bored, can we do something else?</a><br>
+<div id='divider'></div>
+</div>
+</div>
+<div id="chats" class="chattext"></div>
+</div>
+</html>

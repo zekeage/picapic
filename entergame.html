@@ -1,0 +1,12 @@
+<html>
+<head> <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"  /> </head>
+  <body>
+    <a href="{{ url }}">{{ url_linktext }}</a>
+	<h2>Hello, {{user}}!</h2>
+	<form action="/begin" method="post">
+	<h2>Game Name:<br><input type="text" name="gname" class = "loginField"><br></h2>
+    <button type="submit" id = "b1" class = "loginButton" name="choice" value = "0">JOIN THE FUCKING GAME!</button>
+	<button type="submit" id = "b1" class = "loginButton" name="choice" value = "1">CREATE THE FUCKING GAME!</button>
+    </form>
+  </body>
+</html>

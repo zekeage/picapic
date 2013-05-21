@@ -1,0 +1,18 @@
+<html>
+<div id = "hand">
+<head> <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"  /> </head>
+	
+	{% for im in imlist %}
+	{% if im != -1 %}
+
+	<div id = "{{im}}wrap" class = "imwrapper" >
+		<div id = "{{im}}hov" class = "imhover" onclick="{{clickFunc}}"></div>
+			<img id="{{im}}" class = "unselectedIM" src="/im?imkey={{im}}"/>
+	</div>
+
+
+	{% endif %}
+	{% endfor %}
+<button id = "offlimits" type="submit" style="display: none;" value = "{{notallowed}}"></button>
+</div>
+</html>

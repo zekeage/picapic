@@ -1,0 +1,21 @@
+<html>
+<div id = "header">
+<head> <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"  /> </head>
+<err id = "err">{{errtext}}</err>
+<h2>{{debug}}</h2>
+<h2 style="font-weight: bold;">{{instructions}}</h2>
+<h2 style="font-weight: normal;">{{message|escape}}</h2>
+<body>
+{% if hasbox %}
+    <h2><div><textarea id="tbox" name="content" class="tarea" maxlength="500" onkeypress="gnameSubmit(event)">{{boxcontents}}</textarea></div></h2>
+{% endif %}	
+
+{% if hasbutton %}
+	<button type="button" id = "b1" class = "loginButton" name="choice" value = "" onclick="checkErrors(this)">BOOM!</button>
+	<br><br>
+{% else %}
+	<button style="display: none;" type="button" id = "b1" class = "loginButton" name="choice" value = "" onclick="checkErrors(this)">BOOM!</button>
+{% endif  %}		
+</body>
+</div>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head> <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"  /> </head>
+<div id = "stats">
+<textarea  id = "secret" style="display: none;">{{imlist}}</textarea>
+<table id="statsTable" class="gridtable" style="width: {{Fwidth}}%;">
+	<tr id="t1">
+	{% for member in members %}
+		{% if member[0] %}
+			{% if whosturn == member[1] %}
+			<th style="width: {{width}}%; color: #5F2;"><u>{{member[1]}}{{member[2]}}</u></th>
+			{% else %}
+		    <th style="width: {{width}}%; color: #5F2;">{{member[1]}}{{member[2]}}</th>
+			{% endif %}	
+		{% else %}
+			{% if whosturn == member[1] %}
+			<th style="width: {{width}}%;"><u>{{member[1]}}{{member[2]}}</u></th>
+			{% else %}
+		    <th style="width: {{width}}%;">{{member[1]}}{{member[2]}}</th>
+			{% endif %}	
+		{% endif %}	
+
+	{% endfor %}
+	</tr >
+	
+	<tr id="t2">
+	{% for score in scores %}
+	<td style="width: {{width}}%;">{{score}}</td>
+	{% endfor %}
+	</tr >
+	
+	{% if showImages %}
+	<tr >
+	{% for im in imlist %}
+		{% if im[1] %}
+			<td style="width: {{width}}%;">
+			<div id = "{{im[0]}}twrap" class = "thumbwrapper" >
+			<div id = "thov" class = "thumbhover" ></div>
+			<img id="{{im[0]}}" class = "thumbwinner" src="/im?imkey={{im[0]}}" onclick=""/><br>{{im[2]}}
+			</div>
+			</td>
+		{% else %}
+			<td style="width: {{width}}%;">
+			<div id = "{{im[0]}}twrap" class = "thumbwrapper" >
+			<div id = "{{im[0]}}thov" class = "thumbhover" ></div>
+			<img id="{{im[0]}}" class = "thumb" src="/im?imkey={{im[0]}}" onclick=""/><br>{{im[2]}}
+			</div>
+			</td>
+		{% endif %}
+	{% endfor %}
+	</tr >
+	{% endif %}
+</table>	
+<br>
+</div>
+</html>
